@@ -5,7 +5,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "example" {
-    ami = "ami-408c7f28"
+    ami = "ami-aa7ab6c2"
     tags {
        Name = "BrianTerraformTest"
        KEEP = "BRIAN"
