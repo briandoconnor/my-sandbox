@@ -3,7 +3,7 @@
   tasks:
     - name: install ambari repo
       get_url: url=http://public-repo-1.hortonworks.com/ambari/centos6/2.x/updates/2.0.1/ambari.repo dest=/etc/yum.repos.d/ambari.repo
-    - name: install libselinux-python 
+    - name: install libselinux-python
       yum: name=libselinux-python state=present
     - name: install ambari-agent
       yum: name=ambari-agent state=present
@@ -15,3 +15,7 @@
       yum: name=ntp state=present
     - name: enable and run ntpd
       service: name=ntpd state=started enabled=yes
+    - name: stop ambari-agent
+      command: 'ambari-agent stop'
+    - name: reset ambari-agent
+      command: 'ambari-agent reset ambari'
