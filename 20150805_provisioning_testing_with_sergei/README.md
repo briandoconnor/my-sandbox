@@ -28,6 +28,10 @@ making sure the hadoop tools pointed their directories to locations off of the r
 At this point make a note of the new AMI in your account and change the file `terraform.tfvars`.  Also
 change your AWS key and secret key in this file.
 
+You also want execute the following in the shell to prevent annoying connection confirmations by Ansible:
+
+    export ANSIBLE_HOST_KEY_CHECKING=False
+
 ## Launching Hadoop
 
 To see what will be called, do the following in your `terraform_hadoop_config` directory:

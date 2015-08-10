@@ -3,5 +3,17 @@
   tasks:
     - name: install ambari-server
       yum: name=ambari-server state=present
-    - name: ambari start
+    - name: setup ambari-server
+      command: ambari-server setup --silent
+    - name: ambari-server start
       service: name=ambari-server state=restarted enabled=yes
+    - name: copy Blueprints
+      copy: src=blueprint.json dest=/tmp/blueprint.json
+    - name: copy Blueprints cluster config
+      copy: src=cluster_creation.json dest=/tmp/cluster_creation.json
+    - name: start ambari-agent
+      command: ambari-agent start
+    - name: load Blueprints
+      command: curl -H "X-Requested-By: ambari" -X POST -u admin:admin http://localhost:8080//api/v1/blueprints/HadoopBlueprint --data "@/tmp/blueprint.json"
+    - name: load Blueprints Cluster
+      command: curl -H "X-Requested-By: ambari" -X POST -u admin:admin http://localhost:8080//api/v1/clusters/HadoopCluster --data "@/tmp/cluster_creation.json"

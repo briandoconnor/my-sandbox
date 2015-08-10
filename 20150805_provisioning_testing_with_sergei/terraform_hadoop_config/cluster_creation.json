@@ -1,0 +1,28 @@
+{
+  "blueprint" : "HadoopBlueprint",
+  "default_password" : "admin",
+  "host_groups" :[
+    {
+      "name" : "host_group_1",
+      "hosts" : [
+        {
+          "fqdn" : "bosun-store00"
+        }
+      ]
+    },
+    {
+      "name" : "host_group_2",
+      "hosts" : [
+        {
+          "fqdn" : "bosun-store01"
+        },
+        {
+          "fqdn" : "bosun-store02"
+        },
+        {
+          "fqdn" : "bosun-store03"
+        },
+      ]
+    },
+  ]
+}
