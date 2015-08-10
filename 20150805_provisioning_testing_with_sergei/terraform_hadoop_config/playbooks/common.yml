@@ -19,3 +19,5 @@
       command: 'ambari-agent stop'
     - name: reset ambari-agent
       command: 'ambari-agent reset ambari'
+    - name: start ambari-agent
+      command: 'ambari-agent start'
