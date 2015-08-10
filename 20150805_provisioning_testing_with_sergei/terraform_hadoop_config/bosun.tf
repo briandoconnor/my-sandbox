@@ -1,5 +1,6 @@
 variable "access_key" {}
 variable "secret_key" {}
+variable "ami_id" {}
 
 provider "aws" {
     access_key = "${var.access_key}"
@@ -8,7 +9,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "ambari" {
-    ami = "ami-8997afe0"
+    ami = "${var.ami_id}"
     tags {
        Name = "ambari"
        KEEP = "BRIAN"
@@ -21,7 +22,7 @@ resource "aws_instance" "ambari" {
 }
 
 resource "aws_instance" "bosun-store00" {
-    ami = "ami-8997afe0"
+    ami = "${var.ami_id}"
     tags {
        Name = "bosun-store00"
        KEEP = "BRIAN"
@@ -34,7 +35,7 @@ resource "aws_instance" "bosun-store00" {
 }
 
 resource "aws_instance" "bosun-store01" {
-    ami = "ami-8997afe0"
+    ami = "${var.ami_id}"
     tags {
        Name = "bosun-store01"
        KEEP = "BRIAN"
@@ -47,7 +48,7 @@ resource "aws_instance" "bosun-store01" {
 }
 
 resource "aws_instance" "bosun-store02" {
-      ami = "ami-8997afe0"
+      ami = "${var.ami_id}"
       tags {
          Name = "bosun-store02"
          KEEP = "BRIAN"
@@ -60,7 +61,7 @@ resource "aws_instance" "bosun-store02" {
 }
 
 resource "aws_instance" "bosun-store03" {
-      ami = "ami-8997afe0"
+      ami = "${var.ami_id}"
       tags {
          Name = "bosun-store03"
          KEEP = "BRIAN"
@@ -73,7 +74,7 @@ resource "aws_instance" "bosun-store03" {
 }
 
 resource "aws_instance" "bosun-server" {
-      ami = "ami-8997afe0"
+      ami = "${var.ami_id}"
       tags {
          Name = "bosun-server"
          KEEP = "BRIAN"

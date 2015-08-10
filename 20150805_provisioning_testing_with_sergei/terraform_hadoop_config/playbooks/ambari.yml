@@ -3,3 +3,5 @@
   tasks:
     - name: install ambari-server
       yum: name=ambari-server state=present
+    - name: ambari start
+      service: name=ambari-server state=restarted enabled=yes
