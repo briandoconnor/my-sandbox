@@ -96,5 +96,6 @@ running as well.
 
 ## TODO
 
+* need to decide on the ambari configuration, what services run where
+* need to make a blueprint and edit the other config file, turn back on the auto-creation using new blueprint
 * need to figure out the lvm or expanded root volume issue so the nodes can have sufficient storage
-* need to make a blueprint and edit the other config file
