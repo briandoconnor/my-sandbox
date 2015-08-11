@@ -1,6 +1,9 @@
 variable "access_key" {}
 variable "secret_key" {}
 variable "ami_id" {}
+variable "name_key" {}
+variable "vol_size" {}
+variable "ssh_key" {}
 
 provider "aws" {
     access_key = "${var.access_key}"
@@ -12,12 +15,12 @@ resource "aws_instance" "ambari" {
     ami = "${var.ami_id}"
     tags {
        Name = "ambari"
-       KEEP = "BRIAN"
+       KEEP = "${var.name_key}"
     }
     instance_type = "m1.medium"
-    key_name = "brian-oicr-3"
+    key_name = "${var.ssh_key}"
     root_block_device {
-        volume_size = "30"
+        volume_size = "${var.vol_size}"
     }
 }
 
@@ -25,12 +28,12 @@ resource "aws_instance" "bosun-store00" {
     ami = "${var.ami_id}"
     tags {
        Name = "bosun-store00"
-       KEEP = "BRIAN"
+       KEEP = "${var.name_key}"
     }
     instance_type = "m1.large"
-    key_name = "brian-oicr-3"
+    key_name = "${var.ssh_key}"
     root_block_device {
-        volume_size = "30"
+        volume_size = "${var.vol_size}"
     }
 }
 
@@ -38,12 +41,12 @@ resource "aws_instance" "bosun-store01" {
     ami = "${var.ami_id}"
     tags {
        Name = "bosun-store01"
-       KEEP = "BRIAN"
+       KEEP = "${var.name_key}"
     }
     instance_type = "m1.large"
-    key_name = "brian-oicr-3"
+    key_name = "${var.ssh_key}"
     root_block_device {
-        volume_size = "30"
+        volume_size = "${var.vol_size}"
     }
 }
 
@@ -51,12 +54,12 @@ resource "aws_instance" "bosun-store02" {
       ami = "${var.ami_id}"
       tags {
          Name = "bosun-store02"
-         KEEP = "BRIAN"
+         KEEP = "${var.name_key}"
       }
       instance_type = "m1.large"
-      key_name = "brian-oicr-3"
+      key_name = "${var.ssh_key}"
       root_block_device {
-          volume_size = "30"
+          volume_size = "${var.vol_size}"
       }
 }
 
@@ -64,12 +67,12 @@ resource "aws_instance" "bosun-store03" {
       ami = "${var.ami_id}"
       tags {
          Name = "bosun-store03"
-         KEEP = "BRIAN"
+         KEEP = "${var.name_key}"
       }
       instance_type = "m1.large"
-      key_name = "brian-oicr-3"
+      key_name = "${var.ssh_key}"
       root_block_device {
-          volume_size = "30"
+          volume_size = "${var.vol_size}"
       }
 }
 
@@ -77,11 +80,11 @@ resource "aws_instance" "bosun-server" {
       ami = "${var.ami_id}"
       tags {
          Name = "bosun-server"
-         KEEP = "BRIAN"
+         KEEP = "${var.name_key}"
       }
       instance_type = "m1.large"
-      key_name = "brian-oicr-3"
+      key_name = "${var.ssh_key}"
       root_block_device {
-          volume_size = "30"
+          volume_size = "${var.vol_size}"
       }
 }

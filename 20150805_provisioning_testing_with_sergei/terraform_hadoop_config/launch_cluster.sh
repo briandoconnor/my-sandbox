@@ -4,7 +4,7 @@
 terraform apply
 
 # sleep for hosts to launch
-#sleep 60
+sleep 60
 
 # generate playbook
 bash gen_ansible_inventory.sh

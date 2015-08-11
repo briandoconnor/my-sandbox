@@ -13,6 +13,8 @@
       copy: src=cluster_creation.json dest=/tmp/cluster_creation.json
     - name: start ambari-agent
       command: ambari-agent restart
+    - name: pause for ambari
+      pause: minutes=1
     - name: load Blueprints
       command: 'curl -H "X-Requested-By: ambari" -X POST -u admin:admin http://localhost:8080/api/v1/blueprints/HadoopBlueprint --data "@/tmp/blueprint.json"'
     - name: load Blueprints Cluster
