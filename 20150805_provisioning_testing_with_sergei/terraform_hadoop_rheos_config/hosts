@@ -1,0 +1,8 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+54.158.118.232 ambari
+54.87.112.84 bosun-server
+54.204.233.135 bosun-store00
+54.205.64.39 bosun-store01
+54.211.76.129 bosun-store02
+54.159.176.33 bosun-store03

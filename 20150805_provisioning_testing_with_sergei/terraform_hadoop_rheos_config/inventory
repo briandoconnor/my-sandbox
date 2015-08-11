@@ -1,0 +1,14 @@
+ambari ansible_ssh_host=54.158.118.232 ansible_ssh_user=root
+bosun-server ansible_ssh_host=54.87.112.84 ansible_ssh_user=root
+bosun-store00 ansible_ssh_host=54.204.233.135 ansible_ssh_user=root
+bosun-store01 ansible_ssh_host=54.205.64.39 ansible_ssh_user=root
+bosun-store02 ansible_ssh_host=54.211.76.129 ansible_ssh_user=root
+bosun-store03 ansible_ssh_host=54.159.176.33 ansible_ssh_user=root
+[ambari]
+ambari
+[bosun]
+bosun-server
+[bosun-store]
+bosun-store0[0:3]
+[zookeeper]
+bosun-store0[1:3]
