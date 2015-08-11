@@ -17,7 +17,7 @@ resource "aws_instance" "ambari" {
        Name = "ambari"
        KEEP = "${var.name_key}"
     }
-    instance_type = "m4.xlarge"
+    instance_type = "m3.xlarge"
     key_name = "${var.ssh_key}"
     root_block_device {
         volume_size = "${var.vol_size}"
@@ -30,7 +30,7 @@ resource "aws_instance" "zoo-name" {
        Name = "zoo-name"
        KEEP = "${var.name_key}"
     }
-    instance_type = "m4.xlarge"
+    instance_type = "m3.xlarge"
     key_name = "${var.ssh_key}"
     root_block_device {
         volume_size = "${var.vol_size}"
@@ -59,7 +59,7 @@ resource "aws_instance" "kafka" {
         Name = "${concat("kafka-", count.index)}"
         KEEP = "${var.name_key}"
     }
-    instance_type = "m4.large"
+    instance_type = "m3.large"
     key_name = "${var.ssh_key}"
     root_block_device {
         volume_size = "${var.vol_size}"

@@ -93,3 +93,7 @@ the playbook, and rebuild your cluster.  If everything works you will be left
 with a funtioning cluster that can be controlled via the Ambari dashboard.  And
 if you extended the services with Ansible playbooks you can have other infrastructure
 running as well.
+
+## TODO
+
+* need to figure out the lvm or expanded root volume issue so the nodes can have sufficient storage
