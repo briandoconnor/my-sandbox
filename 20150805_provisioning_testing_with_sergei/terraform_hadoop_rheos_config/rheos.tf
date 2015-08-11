@@ -17,7 +17,7 @@ resource "aws_instance" "ambari" {
        Name = "ambari"
        KEEP = "${var.name_key}"
     }
-    instance_type = "m1.medium"
+    instance_type = "m4.xlarge"
     key_name = "${var.ssh_key}"
     root_block_device {
         volume_size = "${var.vol_size}"
@@ -30,74 +30,38 @@ resource "aws_instance" "zoo-name" {
        Name = "zoo-name"
        KEEP = "${var.name_key}"
     }
-    instance_type = "m1.medium"
+    instance_type = "m4.xlarge"
     key_name = "${var.ssh_key}"
     root_block_device {
         volume_size = "${var.vol_size}"
     }
 }
 
-resource "aws_instance" "spark-store01" {
+resource "aws_instance" "spark" {
+    count = "3"
     ami = "${var.ami_id}"
     tags {
-       Name = "spark-store01"
+       Name = "${concat("spark-", count.index)}"
        KEEP = "${var.name_key}"
     }
-    instance_type = "m1.large"
+    instance_type = "r3.2xlarge"
     key_name = "${var.ssh_key}"
     root_block_device {
         volume_size = "${var.vol_size}"
     }
 }
 
-resource "aws_instance" "spark-store02" {
-      ami = "${var.ami_id}"
-      tags {
-         Name = "spark-store02"
-         KEEP = "${var.name_key}"
-      }
-      instance_type = "m1.large"
-      key_name = "${var.ssh_key}"
-      root_block_device {
-          volume_size = "${var.vol_size}"
-      }
-}
 
-resource "aws_instance" "spark-store03" {
-      ami = "${var.ami_id}"
-      tags {
-         Name = "spark-store03"
-         KEEP = "${var.name_key}"
-      }
-      instance_type = "m1.large"
-      key_name = "${var.ssh_key}"
-      root_block_device {
-          volume_size = "${var.vol_size}"
-      }
-}
-
-resource "aws_instance" "kafka00" {
-      ami = "${var.ami_id}"
-      tags {
-         Name = "kafka01"
-         KEEP = "${var.name_key}"
-      }
-      instance_type = "m1.large"
-      key_name = "${var.ssh_key}"
-      root_block_device {
-          volume_size = "${var.vol_size}"
-      }
-}
-
-resource "aws_instance" "kafka01" {
-      ami = "${var.ami_id}"
-      tags {
-         Name = "kafka02"
-         KEEP = "${var.name_key}"
-      }
-      instance_type = "m1.large"
-      key_name = "${var.ssh_key}"
-      root_block_device {
-          volume_size = "${var.vol_size}"
-      }
+resource "aws_instance" "kafka" {
+    count = 2
+    ami = "${var.ami_id}"
+    tags {
+        Name = "${concat("kafka-", count.index)}"
+        KEEP = "${var.name_key}"
+    }
+    instance_type = "m4.large"
+    key_name = "${var.ssh_key}"
+    root_block_device {
+        volume_size = "${var.vol_size}"
+    }
 }
