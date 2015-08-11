@@ -97,3 +97,4 @@ running as well.
 ## TODO
 
 * need to figure out the lvm or expanded root volume issue so the nodes can have sufficient storage
+* need to make a blueprint and edit the other config file

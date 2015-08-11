@@ -16,9 +16,9 @@ ambari
 [zoo-name]
 zoo-name
 [kafka]
-kafka0[1:2]
-[spark-store]
-spark-store0[1:3]
+kafka-[0:1]
+[spark]
+spark-[0:2]
 
 
 EOF
@@ -27,7 +27,7 @@ echo -n > ${ROSTER_FILE}
 echo -n > ${INVENTORY_FILE}
 echo "${HOSTS_HEAD}" > ${HOSTS_FILE}
 
-for HOST in ambari zoo-name kafka0{1..2} spark-store0{1..3}
+for HOST in ambari zoo-name kafka-{0..1} spark-{0..2}
 do
     IP=$(terraform output ${HOST}.ip)
     echo "${IP} ${HOST}" >> ${HOSTS_FILE}

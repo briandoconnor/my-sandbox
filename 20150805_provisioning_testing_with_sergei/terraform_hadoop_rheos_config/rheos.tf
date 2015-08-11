@@ -37,11 +37,10 @@ resource "aws_instance" "zoo-name" {
     }
 }
 
-resource "aws_instance" "spark" {
-    count = "3"
+resource "aws_instance" "spark-0" {
     ami = "${var.ami_id}"
     tags {
-       Name = "${concat("spark-", count.index)}"
+       Name = "spark-0"
        KEEP = "${var.name_key}"
     }
     instance_type = "r3.2xlarge"
@@ -51,12 +50,49 @@ resource "aws_instance" "spark" {
     }
 }
 
-
-resource "aws_instance" "kafka" {
-    count = 2
+resource "aws_instance" "spark-1" {
     ami = "${var.ami_id}"
     tags {
-        Name = "${concat("kafka-", count.index)}"
+       Name = "spark-1"
+       KEEP = "${var.name_key}"
+    }
+    instance_type = "r3.2xlarge"
+    key_name = "${var.ssh_key}"
+    root_block_device {
+        volume_size = "${var.vol_size}"
+    }
+}
+
+resource "aws_instance" "spark-2" {
+    ami = "${var.ami_id}"
+    tags {
+       Name = "spark-2"
+       KEEP = "${var.name_key}"
+    }
+    instance_type = "r3.2xlarge"
+    key_name = "${var.ssh_key}"
+    root_block_device {
+        volume_size = "${var.vol_size}"
+    }
+}
+
+resource "aws_instance" "kafka-0" {
+    ami = "${var.ami_id}"
+    tags {
+        Name = "kafka-0"
+        KEEP = "${var.name_key}"
+    }
+    instance_type = "m3.large"
+    key_name = "${var.ssh_key}"
+    root_block_device {
+        volume_size = "${var.vol_size}"
+    }
+}
+
+resource "aws_instance" "kafka-1" {
+    ami = "${var.ami_id}"
+    tags {
+        Name = "kafka-1"
         KEEP = "${var.name_key}"
     }
     instance_type = "m3.large"
