@@ -79,7 +79,7 @@ resource "aws_instance" "spark-store03" {
 resource "aws_instance" "kafka00" {
       ami = "${var.ami_id}"
       tags {
-         Name = "kafka00"
+         Name = "kafka01"
          KEEP = "${var.name_key}"
       }
       instance_type = "m1.large"
@@ -92,7 +92,7 @@ resource "aws_instance" "kafka00" {
 resource "aws_instance" "kafka01" {
       ami = "${var.ami_id}"
       tags {
-         Name = "kafka01"
+         Name = "kafka02"
          KEEP = "${var.name_key}"
       }
       instance_type = "m1.large"

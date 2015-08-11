@@ -13,12 +13,12 @@ EOF
 read -d '' INVENTORY_GROUPS <<EOF
 [ambari]
 ambari
-[bosun]
-bosun-server
-[bosun-store]
-bosun-store0[0:3]
-[zookeeper]
-bosun-store0[1:3]
+[zoo-name]
+zoo-name
+[kafka]
+kafka0[1:2]
+[spark-store]
+spark-store0[1:3]
 
 
 EOF
@@ -27,7 +27,7 @@ echo -n > ${ROSTER_FILE}
 echo -n > ${INVENTORY_FILE}
 echo "${HOSTS_HEAD}" > ${HOSTS_FILE}
 
-for HOST in ambari bosun-server bosun-store00 bosun-store01 bosun-store02 bosun-store03
+for HOST in ambari zoo-name kafka0{1..2} spark-store0{1..3}
 do
     IP=$(terraform output ${HOST}.ip)
     echo "${IP} ${HOST}" >> ${HOSTS_FILE}
