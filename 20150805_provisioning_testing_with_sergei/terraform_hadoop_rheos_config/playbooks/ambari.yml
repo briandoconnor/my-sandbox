@@ -5,6 +5,8 @@
       yum: name=ambari-server state=present
     - name: setup ambari-server
       command: ambari-server setup --silent
+    - name: pause for ambari setup to finish
+      pause: minutes=2
     - name: ambari-server start
       service: name=ambari-server state=restarted enabled=yes
     - name: copy Blueprints
