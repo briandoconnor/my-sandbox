@@ -94,6 +94,12 @@ with a funtioning cluster that can be controlled via the Ambari dashboard.  And
 if you extended the services with Ansible playbooks you can have other infrastructure
 running as well.
 
+## Resizing Root Partition
+
+It looks like Centos doesn't automatically resize the reoot partition if you increase
+it via the AWS console.  So look at this [stackoverflow](http://stackoverflow.com/questions/24014493/unable-to-resize-root-partition-on-ec2-centos) answer for information on how to increase the root partition size. The default,
+community Centos6 AMI has only an 8G root partition which is much too small. 
+
 ## TODO
 
 * need to decide on the ambari configuration, what services run where
