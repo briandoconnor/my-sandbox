@@ -98,10 +98,20 @@ running as well.
 
 It looks like Centos doesn't automatically resize the reoot partition if you increase
 it via the AWS console.  So look at this [stackoverflow](http://stackoverflow.com/questions/24014493/unable-to-resize-root-partition-on-ec2-centos) answer for information on how to increase the root partition size. The default,
-community Centos6 AMI has only an 8G root partition which is much too small. 
+community Centos6 AMI has only an 8G root partition which is much too small.
+
+## Using Different AMIs
+
+You'll notice in the *.tf files that the AMI is a variable. You may, however, want to
+specify multiple AMI based on different storage profiles.  In which case make additional
+variables and update the .tf file.  I made two different AMIs which were based on
+the community CentOS6 HVM AMI but with the root partition expanded to 30 and 1024GB
+respectively:
+
+* ami-31812b5a
+* ami-1b832970
 
 ## TODO
 
 * need to decide on the ambari configuration, what services run where
 * need to make a blueprint and edit the other config file, turn back on the auto-creation using new blueprint
-* need to figure out the lvm or expanded root volume issue so the nodes can have sufficient storage
