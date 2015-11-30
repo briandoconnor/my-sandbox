@@ -1,0 +1,46 @@
+$VAR1 = {
+          'icgc_donors_with_gnos_complete_not_empty' => 1944,
+          'total_donors' => 2920,
+          'icgc_donors' => 1987,
+          'unknown_donors' => 47,
+          'donors_with_gnos_complete_not_empty' => 2840,
+          'donors_with_gnos_complete' => 2920,
+          'counts' => {
+                        'https://gtrepo-ebi.annailabs.com/' => {
+                                                                 'icgc' => 1924,
+                                                                 'unknown' => 7
+                                                               },
+                        'https://gtrepo-bsc.annailabs.com/' => {
+                                                                 'icgc' => 1893,
+                                                                 'unknown' => 7
+                                                               },
+                        'https://cghub.ucsc.edu/' => {
+                                                       'unknown' => 3,
+                                                       'tcga' => 886
+                                                     },
+                        'https://gtrepo-osdc-icgc.annailabs.com/' => {
+                                                                       'icgc' => 330
+                                                                     },
+                        'https://gtrepo-riken.annailabs.com/' => {
+                                                                   'icgc' => 461
+                                                                 },
+                        'https://gtrepo-etri.annailabs.com/' => {
+                                                                  'icgc' => 65
+                                                                },
+                        'https://gtrepo-dkfz.annailabs.com/' => {
+                                                                  'unknown' => 7,
+                                                                  'icgc' => 481
+                                                                }
+                      },
+          'tcga_donors_with_gnos_complete' => 886,
+          'unknown_donors_with_gnos_complete' => 47,
+          'icgc_donors_with_gnos_complete' => 1987,
+          'types' => {
+                       'tcga' => 886,
+                       'icgc' => 1987,
+                       'unknown' => 47
+                     },
+          'unknown_donors_with_gnos_complete_not_empty' => 10,
+          'tcga_donors_with_gnos_complete_not_empty' => 886,
+          'tcga_donors' => 886
+        };
