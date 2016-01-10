@@ -48,13 +48,13 @@ while(<STDIN>) {
       }
     }
     # print out those not defined!
-    if (!defined($donor->{variant_calling_results}{sanger_variant_calling})) {
+    if (!defined($donor->{variant_calling_results}{sanger_variant_calling}) || scalar (@{$donor->{variant_calling_results}{sanger_variant_calling}{gnos_repo}}) < 1) {
       print SANGER $donor->{donor_unique_id}."\n";
     }
-    if (!defined($donor->{variant_calling_results}{dkfz_embl_variant_calling})) {
+    if (!defined($donor->{variant_calling_results}{dkfz_embl_variant_calling})  || scalar (@{$donor->{variant_calling_results}{dkfz_embl_variant_calling}{gnos_repo}}) < 1) {
       print DKFZ $donor->{donor_unique_id}."\n";
     }
-    if (!defined($donor->{variant_calling_results}{broad_variant_calling})) {
+    if (!defined($donor->{variant_calling_results}{broad_variant_calling}) || scalar (@{$donor->{variant_calling_results}{broad_variant_calling}{gnos_repo}}) < 1) {
       print BROAD $donor->{donor_unique_id}."\n";
     }
   }
