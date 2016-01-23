@@ -4,6 +4,10 @@ use Data::Dumper;
 
 my $d = {};
 
+open BROAD, ">broad_variant_calling.tsv" or die;
+open DKFZ, ">dkfs_embl_variant_calling.tsv" or die;
+open SANGER, ">sanger_variant_calling.tsv" or die;
+
 while(<STDIN>) {
   chomp;
   my $type = "";
@@ -43,6 +47,16 @@ while(<STDIN>) {
         $d->{var_counts}{$var_gnos_loc}{$type}{$var_call_type}++;
       }
     }
+    # print out those not defined!
+    if (!defined($donor->{variant_calling_results}{sanger_variant_calling}) || scalar (@{$donor->{variant_calling_results}{sanger_variant_calling}{gnos_repo}}) < 1) {
+      print SANGER $donor->{donor_unique_id}."\n";
+    }
+    if (!defined($donor->{variant_calling_results}{dkfz_embl_variant_calling})  || scalar (@{$donor->{variant_calling_results}{dkfz_embl_variant_calling}{gnos_repo}}) < 1) {
+      print DKFZ $donor->{donor_unique_id}."\n";
+    }
+    if (!defined($donor->{variant_calling_results}{broad_variant_calling}) || scalar (@{$donor->{variant_calling_results}{broad_variant_calling}{gnos_repo}}) < 1) {
+      print BROAD $donor->{donor_unique_id}."\n";
+    }
   }
 }
 
@@ -52,3 +66,7 @@ while(<STDIN>) {
 #print "Donors with GNOS complete not empty: $donors_with_gnos_complete_not_empty\n";
 #print "Counts:\n";
 print Dumper($d);
+
+close BROAD;
+close DKFZ;
+close SANGER;

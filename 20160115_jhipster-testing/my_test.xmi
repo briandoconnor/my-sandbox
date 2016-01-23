@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><uml:Model xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmi:version="2.1" xmi:id="_6UG58LyBEeWjvMAQ-CiPBQ" name="test">
+  <eAnnotations xmi:id="_6UG58byBEeWjvMAQ-CiPBQ" source="Objing">
+    <contents xmi:type="uml:Property" xmi:id="_6UG58ryBEeWjvMAQ-CiPBQ" name="exporterVersion">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_6UG587yBEeWjvMAQ-CiPBQ" value="3.0.0"/>
+    </contents>
+  </eAnnotations>
+  <ownedRule xmi:type="uml:Constraint" xmi:id="_6UG59LyBEeWjvMAQ-CiPBQ" constrainedElement="_6UG5_7yBEeWjvMAQ-CiPBQ">
+    <specification xmi:type="uml:LiteralString" xmi:id="_6UG59byBEeWjvMAQ-CiPBQ" value="nullable=&quot;false&quot;"/>
+  </ownedRule>
+  <packagedElement xmi:type="uml:Class" xmi:id="_6UG59ryBEeWjvMAQ-CiPBQ" name="Employee">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_6UG597yBEeWjvMAQ-CiPBQ">
+      <body>&lt;p&gt;Employee&lt;/p&gt;
+</body>
+    </ownedComment>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_6UG5-LyBEeWjvMAQ-CiPBQ" name="job" visibility="public" type="_6UG5_byBEeWjvMAQ-CiPBQ" aggregation="composite" association="_6UG5-7yBEeWjvMAQ-CiPBQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6UG5-byBEeWjvMAQ-CiPBQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_6UG5-ryBEeWjvMAQ-CiPBQ" name="email" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_6UG5-7yBEeWjvMAQ-CiPBQ" memberEnd="_6UG5-LyBEeWjvMAQ-CiPBQ _6UG5_LyBEeWjvMAQ-CiPBQ">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_6UG5_LyBEeWjvMAQ-CiPBQ" visibility="public" type="_6UG59ryBEeWjvMAQ-CiPBQ" association="_6UG5-7yBEeWjvMAQ-CiPBQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_6UG5_byBEeWjvMAQ-CiPBQ" name="Job">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_6UG5_ryBEeWjvMAQ-CiPBQ">
+      <body/>
+    </ownedComment>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_6UG5_7yBEeWjvMAQ-CiPBQ" name="title" visibility="public" isUnique="false">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_6UG6ALyBEeWjvMAQ-CiPBQ">
+        <body/>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    </ownedAttribute>
+  </packagedElement>
+</uml:Model>
