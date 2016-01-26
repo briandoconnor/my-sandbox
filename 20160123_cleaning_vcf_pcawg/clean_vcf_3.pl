@@ -49,7 +49,7 @@ EOS
   # write hash
   foreach my $chr (sort keys %{$d}) {
     foreach my $pos (sort keys %{$d->{$chr}}) {
-      print $d->{$chr}{$pos}."\n";
+      print OUT $d->{$chr}{$pos}."\n";
     }
   }
 
