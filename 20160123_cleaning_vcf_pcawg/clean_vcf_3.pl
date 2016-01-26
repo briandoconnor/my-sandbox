@@ -44,7 +44,6 @@ EOS
     print "processing file $i\n";
     process_file($i, $OUT);
   }
-  close $OUT;
 
   # write hash
   foreach my $chr (sort keys %{$d}) {
@@ -52,6 +51,8 @@ EOS
       print OUT $d->{$chr}{$pos}."\n";
     }
   }
+
+  close $OUT;
 
   #sort_and_index($workflow);
 
