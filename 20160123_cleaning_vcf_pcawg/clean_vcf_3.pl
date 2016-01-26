@@ -53,7 +53,7 @@ EOS
     }
   }
 
-  sort_and_index($workflow);
+  #sort_and_index($workflow);
 
 }
 
