@@ -25,8 +25,16 @@ my $oid = $tokens[0];
 my $size = $tokens[1];
 
 # create touch file and upload
-print "$oid | $size\n";
+my $start_time = `date +\%s`;
+open OUT, ">/home/ubuntu/$oid.tsv" or die;
+print OUT "OID\t$oid\nSIZE\t$size\nSTART\t$start_time\n";
+close OUT;
 
 # do download
 
+
 # update touch file and upload
+my $end_time = `date +\%s`;
+open OUT, ">>/home/ubuntu/$oid.tsv" or die;
+print OUT "END\t$end_time\n";
+close OUT;
