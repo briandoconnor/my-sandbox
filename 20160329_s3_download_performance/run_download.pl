@@ -26,6 +26,7 @@ my $size = $tokens[1];
 
 # create touch file and upload
 my $start_time = `date +\%s`;
+chomp $start_time;
 open OUT, ">/home/ubuntu/$oid.tsv" or die;
 print OUT "OID\t$oid\nSIZE\t$size\nSTART\t$start_time\n";
 close OUT;
@@ -35,6 +36,10 @@ close OUT;
 
 # update touch file and upload
 my $end_time = `date +\%s`;
+chomp $end_time;
 open OUT, ">>/home/ubuntu/$oid.tsv" or die;
-print OUT "END\t$end_time\n";
+print OUT "END\t$end_time";
 close OUT;
+
+# upload to s3
+system ("aws s3 cp /home/ubuntu/$oid.tsv s3://oconnor-test-bucket/icgc-storage-download-testing/");
