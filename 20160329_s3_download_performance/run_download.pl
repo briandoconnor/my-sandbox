@@ -32,13 +32,13 @@ print OUT "OID\t$oid\nSIZE\t$size\nSTART\t$start_time\n";
 close OUT;
 
 # do download
-
+my $status = system("/home/ubuntu/icgc-storage-client-1.0.13/bin/icgc-storage-client download --object-id $oid --output-dir /mnt/data/");
 
 # update touch file and upload
 my $end_time = `date +\%s`;
 chomp $end_time;
 open OUT, ">>/home/ubuntu/$oid.tsv" or die;
-print OUT "END\t$end_time";
+print OUT "END\t$end_time\nEXITCODE\t$status";
 close OUT;
 
 # upload to s3
