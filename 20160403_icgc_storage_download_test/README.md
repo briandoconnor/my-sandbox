@@ -15,6 +15,9 @@ This creates multiple rounds of spot instance launches so it gradually ramps up 
 fleet of images running the download test.  It also periodically calls the `create_dashboard.pl`
 script to update the locally running Grafana instance.
 
+The user-data provided will cause the run_download.pl script to run and include a shutdown command after
+to ensure the host is terminated when it finishes its run.
+
 ### run_download.pl
 
 This runs on each test host and performs one or more download tests, writing metadata back to S3.
@@ -22,13 +25,18 @@ This runs on each test host and performs one or more download tests, writing met
 ### create_dashboard.pl
 
 This is called by launch_test_instances.pl after a VM is launched.  It's job is to setup
-the instances in Grafana.
+the instances in Grafana, it just looks for all instances that are currently running.
+
+It also sets the termination behavior so a shutdown on the host will result in a termination.
 
 ##Strategy
 
 0. make a Grafana host and generate an API key, checkout this repo, install AWS CLI and configure it
-0. make a base AMI with these scripts, the AWS CLI
-0. on the Grafana host
+0. make a base AMI with these scripts, the AWS CLI, configure it
+0. on the Grafana host run the launch_test_instances.pl script to launch spot requests on a cycle, causing the run_download.pl to run on each and the hosts to shutdown once they complete their run
+0. in parallel, run the create_dashboard.pl script that will periodically insert running instances into the dashboard, keeping a cache of previously seen instances so they don't get dropped
+
+Test the whole thing with a dummy download that lasts only a few minutes 
 
 ##References
 
