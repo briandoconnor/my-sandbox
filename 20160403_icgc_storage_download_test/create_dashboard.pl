@@ -3,7 +3,17 @@ use strict;
 # TODO: need to cache the instance names
 
 # inputs
-my ($num) = @ARGV;
+my ($num, $instances_file) = @ARGV;
+
+my $d = {};
+if (-e $instances_file) {
+  open IN, "<$instances_file" or die;
+  while(<IN>) {
+    chmop;
+    $d->{$_} = 1;
+  }
+  close IN;
+}
 
 # vars
 my $template = `cat dashboard.template`;
@@ -16,6 +26,12 @@ my $instances_list = `aws ec2 describe-instances | grep -i InstanceId`;
 my $first = 1;
 foreach my $line (split /\n/, $instances_list) {
   $line =~ /"InstanceId": "(\S+)"/;
+  $d->{$1} = 1;
+}
+
+# loop over templates
+open OUT, ">$instances_file" or die;
+foreach my $currinstance (keys %{$d}) {
   if ($first > 1 ) { $instances .= ","; }
   $instances .= qq|
                      {
@@ -29,12 +45,14 @@ foreach my $line (split /\n/, $instances_list) {
                            "Average"
                         ],
                         "dimensions" : {
-                           "InstanceId" : "$1"
+                           "InstanceId" : "$currinstance"
                         }
                      }
-|;
+  |;
   $first++;
+  print OUT "$currinstance\n";
 }
+close OUT;
 
 $template =~ s/\@INSTANCES\@/$instances/g;
 $template =~ s/\@NUMBER\@/$num/g;
