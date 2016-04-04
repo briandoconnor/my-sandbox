@@ -12,3 +12,4 @@
 hs_err_pid*
 
 20150805_provisioning_testing_with_sergei/*/terraform.tfvars
+20160403_icgc_storage_download_test/token.txt
