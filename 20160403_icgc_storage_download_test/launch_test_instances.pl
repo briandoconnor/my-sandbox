@@ -51,4 +51,4 @@ shutdown -h now
 }
 
 # cleanup
-system("rm specification.json");
+#system("rm specification.json");
