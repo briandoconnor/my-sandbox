@@ -30,13 +30,14 @@ for (my $i=0; $i<$rounds; $i++) {
 perl /home/ubuntu/gitroot/my-sandbox/20160403_icgc_storage_download_test/run_download.pl $download_counts $instance_type
 shutdown -h now
 |);
+  chomp $user_data_script;
 
   # create a spot request(s)
   # make instance JSON, see http://docs.aws.amazon.com/cli/latest/reference/ec2/request-spot-instances.html
   open OUT, ">specification.json" or die;
   print OUT qq|{
   "ImageId": "$instance_id",
-  "UserData": "|.chomp($user_data_script).qq|",
+  "UserData": "$user_data_script",
   "KeyName": "$key",
   "SecurityGroupIds": [ "$sec_group" ],
   "InstanceType": "$instance_type"
