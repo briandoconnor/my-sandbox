@@ -4,7 +4,7 @@ use MIME::Base64 qw( encode_base64 );
 
 # vars
 my ($rounds, $instances_per_round, $delay_min, $download_counts);
-my $instance_id = "ami-2f383345";
+my $instance_id = "ami-08435762";
 my $key = "brian-ucsc-east-1";
 my $sec_group = "sg-00a8ee78";
 my $instance_type = "m1.xlarge";
