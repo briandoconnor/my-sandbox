@@ -1,5 +1,7 @@
 use strict;
 
+# TODO: need to cache the instance names
+
 # inputs
 my ($num) = @ARGV;
 
@@ -41,6 +43,11 @@ open OUT, ">dashboard.temp.json" or die;
 print OUT $template;
 close OUT;
 
-system qq|curl -H "Authorization: Bearer $token" -H "Accept: application/json" -H "Content-Type: application/json" -X POST http://localhost:3000/api/dashboards/db -d \@dashboard.temp.json|;
+my $result = system qq|curl -H "Authorization: Bearer $token" -H "Accept: application/json" -H "Content-Type: application/json" -X POST http://localhost:3000/api/dashboards/db -d \@dashboard.temp.json|;
+
+# if it fails, try and update
+if ($result) {
+  system qq|curl -H "Authorization: Bearer $token" -H "Accept: application/json" -H "Content-Type: application/json" -X POST http://localhost:3000/api/dashboards/db -d \@dashboard.temp.json|;
+}
 
 system ("rm dashboard.temp.json");

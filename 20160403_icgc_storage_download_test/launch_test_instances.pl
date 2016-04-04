@@ -43,10 +43,11 @@ shutdown -h now
 }|;
   close OUT;
 
-  my $status = system(qq|aws ec2 request-spot-instances --spot-price "$spot_price" --instance-count $instances_per_round --type "one-time" --launch-specification file://specification.json |);
+  #my $status = system(qq|aws ec2 request-spot-instances --spot-price "$spot_price" --instance-count $instances_per_round --type "one-time" --launch-specification file://specification.json |);
+ print (qq|aws ec2 request-spot-instances --spot-price "$spot_price" --instance-count $instances_per_round --type "one-time" --launch-specification file://specification.json |);
 
   # now sleep between rounds
-  sleep($delay_min * 60);
+  #sleep($delay_min * 60);
 }
 
 # cleanup
