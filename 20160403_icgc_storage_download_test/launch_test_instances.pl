@@ -36,7 +36,7 @@ shutdown -h now
   open OUT, ">specification.json" or die;
   print OUT qq|{
   "ImageId": "$instance_id",
-  "UserData": "|.encode_base64($user_data_script).qq|",
+  "UserData": "|.chomp(encode_base64($user_data_script)).qq|",
   "KeyName": "$key",
   "SecurityGroupIds": [ "$sec_group" ],
   "InstanceType": "$instance_type"
