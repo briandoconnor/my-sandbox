@@ -5,6 +5,7 @@ my ($repeats, $instance_type) = @ARGV;
 if ($instance_type eq '') {
   $instance_type = "unknown";
 }
+if ($repeats < 1) { $repeats = 1; }
 
 # next setup directory
 system ("mkdir -p /mnt/data");
