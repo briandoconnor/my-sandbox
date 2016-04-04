@@ -17,7 +17,7 @@
       "refresh" : false,
       "editable" : true,
       "tags" : [],
-      "id" : null,
+      "id" : @ID@,
       "title" : "ICGC Storage Test Dashboard @NUMBER@",
       "schemaVersion" : 8,
       "links" : [],
@@ -103,7 +103,7 @@
                   "links" : [],
                   "error" : false,
                   "targets" : [
-                    @INSTANCES@ 
+                    @INSTANCES@
                   ],
                   "timeShift" : null,
                   "y_formats" : [

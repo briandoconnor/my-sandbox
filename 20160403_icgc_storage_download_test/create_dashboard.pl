@@ -3,7 +3,7 @@ use strict;
 # TODO: need to cache the instance names
 
 # inputs
-my ($num, $instances_file) = @ARGV;
+my ($num, $instances_file, $previousid) = @ARGV;
 
 my $d = {};
 if (-e $instances_file) {
@@ -14,6 +14,7 @@ if (-e $instances_file) {
   }
   close IN;
 }
+if ($previousid <=0) { $previousid = "null";}
 
 # vars
 my $template = `cat dashboard.template`;
@@ -56,16 +57,12 @@ close OUT;
 
 $template =~ s/\@INSTANCES\@/$instances/g;
 $template =~ s/\@NUMBER\@/$num/g;
+$template =~ s/\@ID\@/$previousid/g;
 
 open OUT, ">dashboard.temp.json" or die;
 print OUT $template;
 close OUT;
 
 my $result = system qq|curl -H "Authorization: Bearer $token" -H "Accept: application/json" -H "Content-Type: application/json" -X POST http://localhost:3000/api/dashboards/db -d \@dashboard.temp.json|;
-
-# if it fails, try and update
-if ($result) {
-  system qq|curl -H "Authorization: Bearer $token" -H "Accept: application/json" -H "Content-Type: application/json" -X POST http://localhost:3000/api/dashboards/db -d \@dashboard.temp.json|;
-}
 
 system ("rm dashboard.temp.json");
