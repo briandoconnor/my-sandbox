@@ -6,13 +6,15 @@ if ($instance_type eq '') {
   $instance_type = "unknown";
 }
 if ($repeats < 1) { $repeats = 1; }
+my $manifest_url = "https://raw.githubusercontent.com/briandoconnor/my-sandbox/develop/20160403_icgc_storage_download_test/manifest.txt";
 
 # next setup directory
 system ("mkdir -p /mnt/data");
 
 # read the manifest file and push into array
 my @d = ();
-open IN, "</home/ubuntu/icgc-storage-client-1.0.13/manifest.txt" or die;
+system("curl -s $manifest_url > /tmp/manifest.txt");
+open IN, "</tmp/manifest.txt" or die;
 while (<IN>) {
   my @a = split /\t/;
   if (!/^repo_code/) {
