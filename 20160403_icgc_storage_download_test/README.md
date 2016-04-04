@@ -29,7 +29,7 @@ This runs on each test host and performs one or more download tests, writing met
 This is called by launch_test_instances.pl after a VM is launched.  It's job is to setup
 the instances in Grafana, it just looks for all instances that are currently running.
 
-It also sets the termination behavior so a shutdown on the host will result in a termination.
+    git pull; perl create_dashboard.pl `date +%s` instances.txt
 
 ##Strategy
 
