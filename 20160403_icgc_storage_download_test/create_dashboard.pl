@@ -1,7 +1,9 @@
 use strict;
 
+# inputs
 my ($num) = @ARGV;
 
+# vars
 my $template = `cat dashboard.template`;
 my $instances = "";
 
@@ -37,4 +39,4 @@ open OUT, ">dashboard.temp.json" or die;
 print OUT $template;
 close OUT;
 
-system 'curl -H "Authorization: Bearer eyJrIjoicUgxUXNrNkRlWDVHQUoybUlWeVVxSzRMZkFUVGNONTgiLCJuIjoiYWRtaW4iLCJpZCI6MX0=" -H "Accept: application/json" -H "Content-Type: application/json" -X POST http://ec2-54-84-18-255.compute-1.amazonaws.com:3000/api/dashboards/db -d @dashboard.temp.json';
+system qq|curl -H "Authorization: Bearer $token" -H "Accept: application/json" -H "Content-Type: application/json" -X POST http://ec2-54-84-18-255.compute-1.amazonaws.com:3000/api/dashboards/db -d @dashboard.temp.json|;

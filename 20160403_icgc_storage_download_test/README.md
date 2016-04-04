@@ -18,6 +18,8 @@ script to update the locally running Grafana instance.
 The user-data provided will cause the run_download.pl script to run and include a shutdown command after
 to ensure the host is terminated when it finishes its run.
 
+    perl launch_test_instances.pl --rounds 1 --instances 1 --download-counts 1 --delay-min 1
+
 ### run_download.pl
 
 This runs on each test host and performs one or more download tests, writing metadata back to S3.
@@ -36,7 +38,7 @@ It also sets the termination behavior so a shutdown on the host will result in a
 0. on the Grafana host run the launch_test_instances.pl script to launch spot requests on a cycle, causing the run_download.pl to run on each and the hosts to shutdown once they complete their run
 0. in parallel, run the create_dashboard.pl script that will periodically insert running instances into the dashboard, keeping a cache of previously seen instances so they don't get dropped
 
-Test the whole thing with a dummy download that lasts only a few minutes 
+Test the whole thing with a dummy download that lasts only a few minutes
 
 ##References
 

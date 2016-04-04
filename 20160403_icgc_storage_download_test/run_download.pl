@@ -67,5 +67,8 @@ while($curr > 0) {
   # upload to s3
   system ("aws s3 rm s3://oconnor-test-bucket/icgc-storage-download-testing/$oid.$repeats.$instance_type.running.tsv");
   system ("aws s3 cp /home/ubuntu/$oid.tsv s3://oconnor-test-bucket/icgc-storage-download-testing/$oid.$repeats.$instance_type.finished.tsv");
-
+  system("rm /home/ubuntu/$oid.tsv");
+  
 }
+
+system("rm /tmp/manifest.txt");

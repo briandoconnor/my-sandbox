@@ -8,7 +8,7 @@ my $instance_id = "ami-2f383345";
 my $key = "brian-ucsc-east-1";
 my $sec_group = "sg-00a8ee78";
 my $instance_type = "m1.xlarge";
-my $spot_price = "0.06"
+my $spot_price = "0.06";
 
 # options
 GetOptions ("rounds=i" => \$rounds,
@@ -48,3 +48,6 @@ shutdown -h now
   # now sleep between rounds
   sleep($delay_min * 60);
 }
+
+# cleanup
+system("rm specification.json");
