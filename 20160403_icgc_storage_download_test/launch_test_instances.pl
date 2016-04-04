@@ -48,6 +48,9 @@ shutdown -h now
 
   # now sleep between rounds
   sleep($delay_min * 60);
+
+  # make dashboard
+  system("perl create_dashboard.pl `date +\%s` instances.txt");
 }
 
 # cleanup

@@ -18,7 +18,10 @@ script to update the locally running Grafana instance.
 The user-data provided will cause the run_download.pl script to run and include a shutdown command after
 to ensure the host is terminated when it finishes its run.
 
+    # testing
     perl launch_test_instances.pl --rounds 1 --instances 1 --download-counts 1 --delay-min 1
+    # production
+    perl launch_test_instances.pl --rounds 10 --instances 10 --download-counts 5 --delay-min 60
 
 ### run_download.pl
 
