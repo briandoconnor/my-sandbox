@@ -29,7 +29,7 @@ for (my $i=0; $i<$rounds; $i++) {
   my $user_data_script =  encode_base64(qq|#!/bin/bash
 perl /home/ubuntu/gitroot/my-sandbox/20160403_icgc_storage_download_test/run_download.pl $download_counts $instance_type
 shutdown -h now
-|);
+|, '');
   chomp $user_data_script;
 
   # create a spot request(s)
