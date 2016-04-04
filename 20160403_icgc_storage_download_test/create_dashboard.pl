@@ -9,7 +9,7 @@ my $d = {};
 if (-e $instances_file) {
   open IN, "<$instances_file" or die;
   while(<IN>) {
-    chmop;
+    chomp;
     $d->{$_} = 1;
   }
   close IN;
