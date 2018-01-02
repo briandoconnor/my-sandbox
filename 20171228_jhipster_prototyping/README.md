@@ -14,6 +14,47 @@ This application was generated using JHipster 4.13.1, you can find documentation
     postgres=# create user consonance;
     postgres=# grant all privileges  on database consonance to consonance;
 
+## Make a model
+
+This is `jhipster-jdl.jh`:
+
+```
+entity Blog {
+        name String required minlength(3),
+        handle String required minlength(2)
+}
+
+entity Entry {
+        title String required,
+        content TextBlob required,
+        date ZonedDateTime required
+}
+
+entity Tag {
+        name String required minlength(2)
+}
+
+relationship ManyToOne {
+        Blog{user(login)} to User,
+        Entry{blog(name)} to Blog
+}
+
+relationship ManyToMany {
+        Entry{tag(name)} to Tag{entry}
+}
+
+paginate Entry, Tag with infinite-scroll
+```
+
+## Generate Site
+
+Using the above model
+
+    $> jhipster
+
+## Run
+
+Just build with maven and run in the IDE to start the web service.  Then browse to http://localhost:8080
 
 ## Development
 
