@@ -1,7 +1,7 @@
 Project	WGS	WES	Genotyping Array	mRNA array	RNA-seq	scRNA-seq	miRNA-seq	Methylation Array	ChIP-seq	Panels	Imaging	CNV genotypes	Other	Dataset Size TB
-Centers for Common Disease Genomics (CCDG)	200000	0	0	0	0	0	0	0	0	0	0	0	0	36914.1
-Centers for Mendelian Genomics (CMG)	0	20000	0	0	0	0	0	0	0	0	0	0	0	976.6
-ENCODE	0	0	0	0	0	0	0	0	7813	0	0	0	0	381.5
-GTEx	652	610	651	837	13142	0	0	0	0	1093	0	180	0	818.8
-eMERGE	1800	3745	0	0	0	0	0	0	0	0	0	0	0	515.1
+Centers for Common Disease Genomics (CCDG)	200000	0	0	0	0	0	0	0	0	0	0	0	0	6933.6
+Centers for Mendelian Genomics (CMG)	0	20000	0	0	0	0	0	0	0	0	0	0	0	329.6
+ENCODE	0	0	0	0	0	0	0	0	7813	0	0	0	0	190.7
+GTEx	652	610	651	837	13142	0	0	0	0	1093	0	180	0	426.4
+eMERGE	1800	3745	0	0	0	0	0	0	0	0	0	0	0	267.2
 1000 Genomes	3775	0	0	0	0	0	0	0	0	0	0	0	0	712.0
