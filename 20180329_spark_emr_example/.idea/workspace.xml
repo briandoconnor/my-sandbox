@@ -39,25 +39,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Kmer.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Kmer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Kmer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="47" column="39" lean-forward="false" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
+            <state relative-caret-position="-54">
+              <caret line="111" column="49" lean-forward="false" selection-start-line="111" selection-start-column="49" selection-end-line="111" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3543#3567#0" expanded="true" />
-                <element signature="e#4141#4142#0" expanded="true" />
-                <element signature="e#4187#4188#0" expanded="true" />
-                <element signature="e#4829#4846#0" expanded="true" />
-                <element signature="e#5679#5696#0" expanded="true" />
-                <element signature="e#6366#6375#0" expanded="true" />
+                <element signature="e#3585#3609#0" expanded="true" />
+                <element signature="e#4181#4182#0" expanded="true" />
+                <element signature="e#4227#4228#0" expanded="true" />
+                <element signature="e#4867#4884#0" expanded="true" />
+                <element signature="e#5717#5734#0" expanded="true" />
+                <element signature="e#6404#6413#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SparkUtil.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SparkUtil.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/SparkUtil.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -90,8 +90,8 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/SimpleApp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Kmer.java" />
         <option value="$PROJECT_DIR$/src/main/java/SparkUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Kmer.java" />
       </list>
     </option>
   </component>
@@ -545,12 +545,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1522387939125</updated>
-      <workItem from="1522387940625" duration="4289000" />
+      <workItem from="1522387940625" duration="4527000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4289000" />
+    <option name="totallyTimeSpent" value="4527000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
@@ -615,22 +615,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Kmer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="47" column="39" lean-forward="false" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3543#3567#0" expanded="true" />
-            <element signature="e#4141#4142#0" expanded="true" />
-            <element signature="e#4187#4188#0" expanded="true" />
-            <element signature="e#4829#4846#0" expanded="true" />
-            <element signature="e#5679#5696#0" expanded="true" />
-            <element signature="e#6366#6375#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/SparkUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -639,6 +623,22 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1935#1936#0" expanded="true" />
             <element signature="e#1965#1966#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Kmer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-54">
+          <caret line="111" column="49" lean-forward="false" selection-start-line="111" selection-start-column="49" selection-end-line="111" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3585#3609#0" expanded="true" />
+            <element signature="e#4181#4182#0" expanded="true" />
+            <element signature="e#4227#4228#0" expanded="true" />
+            <element signature="e#4867#4884#0" expanded="true" />
+            <element signature="e#5717#5734#0" expanded="true" />
+            <element signature="e#6404#6413#0" expanded="true" />
           </folding>
         </state>
       </provider>

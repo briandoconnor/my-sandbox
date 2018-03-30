@@ -48,6 +48,7 @@ public class Kmer {
         final String fastqFileName =  args[0];
         final int K =  Integer.parseInt(args[1]); // to find K-mers
         final int N =  Integer.parseInt(args[2]); // to find top-N
+        final String outputPath =  args[3];
 
         // STEP-2: create a Spark context object
         JavaSparkContext ctx = SparkUtil.createJavaSparkContext("kmer");
@@ -59,7 +60,7 @@ public class Kmer {
 
         // STEP-3: read all transactions from HDFS and create the first RDD
         JavaRDD<String> records = ctx.textFile(fastqFileName, 1);
-        records.saveAsTextFile("/kmers/output/1");
+        records.saveAsTextFile(outputPath+"/1");
 
         // JavaRDD<T> filter(Function<T,Boolean> f)
         // Return a new RDD containing only the elements that satisfy a predicate.
@@ -99,7 +100,7 @@ public class Kmer {
                 return list.iterator();
             }
         });
-        kmers.saveAsTextFile("/kmers/output/2");
+        kmers.saveAsTextFile(outputPath+"/2");
 
         // STEP-5: combine/reduce frequent kmers
         JavaPairRDD<String, Integer> kmersGrouped = kmers.reduceByKey(new Function2<Integer, Integer, Integer>() {
@@ -108,7 +109,7 @@ public class Kmer {
                 return i1 + i2;
             }
         });
-        kmersGrouped.saveAsTextFile("/kmers/output/3");
+        kmersGrouped.saveAsTextFile(outputPath+"/3");
 
         // now, we have: (K=kmer,V=frequency)
         // next step is find the top-N kmers
