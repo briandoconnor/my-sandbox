@@ -34,7 +34,7 @@ https://stackoverflow.com/questions/41062705/reading-multiple-files-from-s3-in-p
         // seems like compressed files should work fine: https://stackoverflow.com/questions/16302385/gzip-support-in-spark
         //Dataset<String> logData = spark.read().textFile(logFile).cache();
         JavaRDD<String> logData = sc.textFile(url);
-        
+
         long numAs = logData.filter(s -> s.contains("A")).count();
         long numCs = logData.filter(s -> s.contains("C")).count();
 
