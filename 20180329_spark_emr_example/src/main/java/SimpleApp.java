@@ -7,7 +7,7 @@ import org.apache.spark.api.java.JavaSparkContext;
 public class SimpleApp {
     public static void main(String[] args) {
 
-        String url = "https://s3-us-west-2.amazonaws.com/hca-data-bundles/seq/GSE81904/SRR3587502/SRR3587502_1.fastq.gz";
+        String url = "s3://hca-data-bundles/seq/GSE81904/SRR3587502/SRR3587502_1.fastq.gz";
         if (args.length > 0) {
             url = args[0];
         }
