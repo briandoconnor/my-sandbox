@@ -165,6 +165,6 @@ public class Kmer {
 
         // done
         //ctx.close();
-        //System.exit(0);
+        System.exit(0);
     }
 }
