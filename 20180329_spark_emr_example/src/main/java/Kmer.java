@@ -41,14 +41,15 @@ public class Kmer {
 
     public static void main(String[] args) throws Exception {
         // STEP-1: handle input parameters
-        if (args.length < 3) {
-            System.err.println("Usage: Kmer <fastq-file> <K> <N>");
+        if (args.length < 4) {
+            System.err.println("Usage: Kmer <fastq-file> <K> <N> <partitions> <outputPath>");
             System.exit(1);
         }
         final String fastqFileName =  args[0];
         final int K =  Integer.parseInt(args[1]); // to find K-mers
         final int N =  Integer.parseInt(args[2]); // to find top-N
-        final String outputPath =  args[3];
+        final int partitionsNum =  Integer.parseInt(args[3]); // number of partitions to use
+        final String outputPath =  args[4]; // output report path
 
         // STEP-2: create a Spark context object
         JavaSparkContext ctx = SparkUtil.createJavaSparkContext("kmer");
@@ -59,7 +60,7 @@ public class Kmer {
         final Broadcast<Integer> broadcastN = ctx.broadcast(N);
 
         // STEP-3: read all transactions from HDFS and create the first RDD
-        JavaRDD<String> records = ctx.textFile(fastqFileName, 40); // is the partitions key? http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.SparkContext@textFile(path:String,minPartitions:Int):org.apache.spark.rdd.RDD[String]
+        JavaRDD<String> records = ctx.textFile(fastqFileName, partitionsNum); // is the partitions key? http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.SparkContext@textFile(path:String,minPartitions:Int):org.apache.spark.rdd.RDD[String]
         //records.saveAsTextFile(outputPath+"/1");
 
         // JavaRDD<T> filter(Function<T,Boolean> f)
@@ -84,7 +85,7 @@ public class Kmer {
         // STEP-4: generate K-mers
         // PairFlatMapFunction<T, K, V>
         // T => Iterable<Tuple2<K, V>>
-        JavaPairRDD<String,Integer> kmers = filteredRDD.flatMapToPair(new PairFlatMapFunction<
+        JavaPairRDD<String,Integer> kmers = filteredRDD.repartition(partitionsNum).flatMapToPair(new PairFlatMapFunction<
                 String,        // T
                 String,        // K
                 Integer        // V
@@ -164,6 +165,7 @@ public class Kmer {
         finalResultsRDD.repartition(1).saveAsTextFile(outputPath+"/top_kmers.tsv");
 
         // done
+        // I'm commenting these out, they cause the EMR job to fail if I leave either in here!?
         //ctx.close();
         //System.exit(0);
     }
