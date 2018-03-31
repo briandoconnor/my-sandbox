@@ -161,10 +161,10 @@ public class Kmer {
         }
 
         JavaRDD<String> finalResultsRDD = ctx.parallelize(finalResults);
-        finalResultsRDD.saveAsTextFile(outputPath+"/top_kmers.tsv");
+        finalResultsRDD.repartition(1).saveAsTextFile(outputPath+"/top_kmers.tsv");
 
         // done
-        ctx.close();
+        //ctx.close();
         //System.exit(0);
     }
 }
