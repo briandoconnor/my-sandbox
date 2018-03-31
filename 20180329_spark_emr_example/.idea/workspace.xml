@@ -42,16 +42,16 @@
       <file leaf-file-name="Kmer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Kmer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="83">
-              <caret line="61" column="252" lean-forward="false" selection-start-line="61" selection-start-column="252" selection-end-line="61" selection-end-column="252" />
+            <state relative-caret-position="323">
+              <caret line="111" column="54" lean-forward="false" selection-start-line="111" selection-start-column="54" selection-end-line="111" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3774#3798#0" expanded="true" />
-                <element signature="e#4370#4371#0" expanded="true" />
-                <element signature="e#4416#4417#0" expanded="true" />
-                <element signature="e#5056#5073#0" expanded="true" />
-                <element signature="e#5906#5923#0" expanded="true" />
-                <element signature="e#6593#6602#0" expanded="true" />
+                <element signature="e#4374#4375#0" expanded="true" />
+                <element signature="e#4420#4421#0" expanded="true" />
+                <element signature="e#5064#5081#0" expanded="true" />
+                <element signature="e#5914#5931#0" expanded="true" />
+                <element signature="e#6601#6610#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -84,6 +84,8 @@
     <findStrings>
       <find>records</find>
       <find>filteredRDD</find>
+      <find>saveAsTextFile</find>
+      <find>outputPath</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -551,12 +553,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1522387939125</updated>
-      <workItem from="1522387940625" duration="5802000" />
+      <workItem from="1522387940625" duration="6170000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5802000" />
+    <option name="totallyTimeSpent" value="6170000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
@@ -635,16 +637,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Kmer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="61" column="252" lean-forward="false" selection-start-line="61" selection-start-column="252" selection-end-line="61" selection-end-column="252" />
+        <state relative-caret-position="323">
+          <caret line="111" column="54" lean-forward="false" selection-start-line="111" selection-start-column="54" selection-end-line="111" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3774#3798#0" expanded="true" />
-            <element signature="e#4370#4371#0" expanded="true" />
-            <element signature="e#4416#4417#0" expanded="true" />
-            <element signature="e#5056#5073#0" expanded="true" />
-            <element signature="e#5906#5923#0" expanded="true" />
-            <element signature="e#6593#6602#0" expanded="true" />
+            <element signature="e#4374#4375#0" expanded="true" />
+            <element signature="e#4420#4421#0" expanded="true" />
+            <element signature="e#5064#5081#0" expanded="true" />
+            <element signature="e#5914#5931#0" expanded="true" />
+            <element signature="e#6601#6610#0" expanded="true" />
           </folding>
         </state>
       </provider>
