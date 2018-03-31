@@ -100,7 +100,7 @@ public class Kmer {
                 return list.iterator();
             }
         });
-        kmers.saveAsTextFile(outputPath+"/2.tsv");
+        //kmers.saveAsTextFile(outputPath+"/2.tsv");
 
         // STEP-5: combine/reduce frequent kmers
         JavaPairRDD<String, Integer> kmersGrouped = kmers.reduceByKey(new Function2<Integer, Integer, Integer>() {
@@ -109,7 +109,7 @@ public class Kmer {
                 return i1 + i2;
             }
         });
-        kmersGrouped.saveAsTextFile(outputPath+"/3.tsv");
+        //kmersGrouped.saveAsTextFile(outputPath+"/3.tsv");
 
         // now, we have: (K=kmer,V=frequency)
         // next step is find the top-N kmers
