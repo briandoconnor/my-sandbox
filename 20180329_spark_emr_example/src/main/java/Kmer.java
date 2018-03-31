@@ -153,18 +153,18 @@ public class Kmer {
 
         // emit final topN descending
         System.out.println("=== top " + N + " ===");
+        ArrayList<String> finalResults = new ArrayList<String>();
         List<Integer> frequencies = new ArrayList<Integer>(finaltopN.keySet());
         for(int i = frequencies.size()-1; i>=0; i--) {
             System.out.println(frequencies.get(i) + "\t" + finaltopN.get(frequencies.get(i)));
+            finalResults.add(frequencies.get(i) + "\t" + finaltopN.get(frequencies.get(i)));
         }
 
-
-        //for (Map.Entry<Integer, String> entry : finaltopN.entrySet()) {
-        //   System.out.println(entry.getKey() + "--" + entry.getValue());
-        //}
+        JavaRDD<String> finalResultsRDD = ctx.parallelize(finalResults);
+        finalResultsRDD.saveAsTextFile(outputPath+"/top_kmers.tsv");
 
         // done
         //ctx.close();
-        System.exit(0);
+        //System.exit(0);
     }
 }
