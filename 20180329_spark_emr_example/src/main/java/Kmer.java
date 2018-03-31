@@ -59,7 +59,7 @@ public class Kmer {
         final Broadcast<Integer> broadcastN = ctx.broadcast(N);
 
         // STEP-3: read all transactions from HDFS and create the first RDD
-        JavaRDD<String> records = ctx.textFile(fastqFileName, 1);
+        JavaRDD<String> records = ctx.textFile(fastqFileName, 40); // is the partitions key? http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.SparkContext@textFile(path:String,minPartitions:Int):org.apache.spark.rdd.RDD[String]
         //records.saveAsTextFile(outputPath+"/1");
 
         // JavaRDD<T> filter(Function<T,Boolean> f)
