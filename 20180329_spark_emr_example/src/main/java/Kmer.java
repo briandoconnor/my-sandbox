@@ -60,7 +60,7 @@ public class Kmer {
 
         // STEP-3: read all transactions from HDFS and create the first RDD
         JavaRDD<String> records = ctx.textFile(fastqFileName, 1);
-        records.saveAsTextFile(outputPath+"/1");
+        //records.saveAsTextFile(outputPath+"/1");
 
         // JavaRDD<T> filter(Function<T,Boolean> f)
         // Return a new RDD containing only the elements that satisfy a predicate.
