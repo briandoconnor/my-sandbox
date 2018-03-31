@@ -164,7 +164,7 @@ public class Kmer {
         finalResultsRDD.saveAsTextFile(outputPath+"/top_kmers.tsv");
 
         // done
-        //ctx.close();
-        System.exit(0);
+        ctx.close();
+        //System.exit(0);
     }
 }
