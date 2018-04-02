@@ -44,7 +44,7 @@ public class Kmer {
         InputStream is = new URL(url).openStream();
         try {
             BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-            String jsonText = readAll(rd);
+            String jsonText = Kmer.readAll(rd);
             JSONObject json = new JSONObject(jsonText);
             return json;
         } finally {
@@ -97,6 +97,7 @@ public class Kmer {
                     JSONObject o = ((JSONObject)json.get("bundle")).getJSONArray("files").getJSONObject(i);
                     String uuid = (String)o.get("uuid");
                     System.err.println("FROM THE JSON THE UUID: "+uuid);
+                    results.add(uuid);
                 }
             } catch (Exception e) {
                 System.err.println("JSON ERROR!!!!: "+e.getMessage());
