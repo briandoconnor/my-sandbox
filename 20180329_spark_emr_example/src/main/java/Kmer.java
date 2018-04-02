@@ -92,14 +92,14 @@ public class Kmer {
             ArrayList<String> results = new ArrayList<String>();
             try {
                 JSONObject json = Kmer.readJsonFromUrl("https://dss.data.humancellatlas.org/v1/bundles/"+data+"?replica=aws");
-                System.out.println("FROM THE JSON: "+((JSONObject)json.get("bundle")).get("creator_uid"));
+                System.err.println("FROM THE JSON: "+((JSONObject)json.get("bundle")).get("creator_uid"));
                 for (int i=0; i<((JSONObject)json.get("bundle")).getJSONArray("files").length(); i++ ) {
                     JSONObject o = ((JSONObject)json.get("bundle")).getJSONArray("files").getJSONObject(i);
                     String uuid = (String)o.get("uuid");
-                    System.out.println("FROM THE JSON THE UUID: "+uuid);
+                    System.err.println("FROM THE JSON THE UUID: "+uuid);
                 }
             } catch (Exception e) {
-                System.err.println(e.getMessage());
+                System.err.println("JSON ERROR!!!!: "+e.getMessage());
             }
             return(results.iterator());
         });
