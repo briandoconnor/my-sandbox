@@ -1,13 +1,12 @@
 
 // STEP-0: import required classes and interfaces
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Collections;
+import java.io.*;
+import java.net.URL;
+import java.nio.charset.Charset;
+import java.util.*;
 //
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 import scala.Tuple2;
 //
 import org.apache.spark.api.java.JavaRDD;
@@ -18,6 +17,7 @@ import org.apache.spark.api.java.function.FlatMapFunction;
 import org.apache.spark.api.java.function.Function;
 import org.apache.spark.api.java.function.Function2;
 import org.apache.spark.broadcast.Broadcast;
+
 //
 //import org.dataalgorithms.util.SparkUtil;
 
@@ -39,10 +39,32 @@ import org.apache.spark.broadcast.Broadcast;
  */
 public class Kmer {
 
+    // utility
+    public static JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
+        InputStream is = new URL(url).openStream();
+        try {
+            BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+            String jsonText = readAll(rd);
+            JSONObject json = new JSONObject(jsonText);
+            return json;
+        } finally {
+            is.close();
+        }
+    }
+
+    public static String readAll(Reader rd) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        int cp;
+        while ((cp = rd.read()) != -1) {
+            sb.append((char) cp);
+        }
+        return sb.toString();
+    }
+
     public static void main(String[] args) throws Exception {
         // STEP-1: handle input parameters
-        if (args.length < 4) {
-            System.err.println("Usage: Kmer <fastq-file> <K> <N> <partitions> <outputPath>");
+        if (args.length < 5) {
+            System.err.println("Usage: Kmer <fastq-file> <K> <N> <partitions> <outputPath> <manifest>");
             System.exit(1);
         }
         final String fastqFileName =  args[0];
@@ -50,6 +72,7 @@ public class Kmer {
         final int N =  Integer.parseInt(args[2]); // to find top-N
         final int partitionsNum =  Integer.parseInt(args[3]); // number of partitions to use
         final String outputPath =  args[4]; // output report path
+        final String manifestPath = args[5]; // path to manifest
 
         // STEP-2: create a Spark context object
         JavaSparkContext ctx = SparkUtil.createJavaSparkContext("kmer");
@@ -62,6 +85,26 @@ public class Kmer {
         // STEP-3: read all transactions from HDFS and create the first RDD
         JavaRDD<String> records = ctx.textFile(fastqFileName, partitionsNum); // is the partitions key? http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.SparkContext@textFile(path:String,minPartitions:Int):org.apache.spark.rdd.RDD[String]
         //records.saveAsTextFile(outputPath+"/1");
+
+        // this is a manifest of UUIDs
+        JavaRDD<String> manifestRecords = ctx.textFile(manifestPath, partitionsNum);
+        JavaRDD<String> listOfFastqUUIDs = manifestRecords.flatMap(data -> {
+            ArrayList<String> results = new ArrayList<String>();
+            try {
+                JSONObject json = Kmer.readJsonFromUrl("https://dss.data.humancellatlas.org/v1/bundles/"+data+"?replica=aws");
+                System.out.println("FROM THE JSON: "+((JSONObject)json.get("bundle")).get("creator_uid"));
+                for (int i=0; i<((JSONObject)json.get("bundle")).getJSONArray("files").length(); i++ ) {
+                    JSONObject o = ((JSONObject)json.get("bundle")).getJSONArray("files").getJSONObject(i);
+                    String uuid = (String)o.get("uuid");
+                    System.out.println("FROM THE JSON THE UUID: "+uuid);
+                }
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+            }
+            return(results.iterator());
+        });
+        listOfFastqUUIDs.repartition(1).saveAsTextFile(outputPath+"/uuids.tsv");
+
 
         // JavaRDD<T> filter(Function<T,Boolean> f)
         // Return a new RDD containing only the elements that satisfy a predicate.
