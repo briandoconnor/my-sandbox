@@ -97,7 +97,9 @@ public class Kmer {
                     JSONObject o = ((JSONObject)json.get("bundle")).getJSONArray("files").getJSONObject(i);
                     String uuid = (String)o.get("uuid");
                     System.err.println("FROM THE JSON THE UUID: "+uuid);
-                    results.add(uuid);
+                    if("application/gzip; dcp-type=data".equals((String)o.get("content-type"))) {
+                        results.add(uuid);
+                    }
                 }
             } catch (Exception e) {
                 System.err.println("JSON ERROR!!!!: "+e.getMessage());
@@ -105,6 +107,9 @@ public class Kmer {
             return(results.iterator());
         });
         listOfFastqUUIDs.repartition(1).saveAsTextFile(outputPath+"/uuids.tsv");
+
+        // now generate fastq URLs
+
 
 
         // JavaRDD<T> filter(Function<T,Boolean> f)
