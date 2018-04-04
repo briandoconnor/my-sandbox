@@ -108,7 +108,8 @@ public class Kmer {
         });
         listOfFastqUUIDs.repartition(1).saveAsTextFile(outputPath+"/uuids.tsv");
 
-        // now generate fastq URLs
+        // now generate fastqs
+        
 
 
 
