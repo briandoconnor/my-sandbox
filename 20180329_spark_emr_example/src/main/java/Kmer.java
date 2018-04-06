@@ -135,7 +135,7 @@ public class Kmer {
             }
             return(results.iterator());
         });
-        listOfFastqUUIDs.saveAsTextFile(outputPath+"/uuids.tsv");
+        listOfFastqUUIDs.repartition(partitionsNum).saveAsTextFile(outputPath+"/uuids.tsv");
 
         // now generate fastqs lines prefixed with file UUID
         // TODO: need to add UUID
@@ -241,7 +241,7 @@ public class Kmer {
         }
 
         JavaRDD<String> finalResultsRDD = ctx.parallelize(finalResults);
-        finalResultsRDD.repartition(1).saveAsTextFile(outputPath+"/top_kmers.tsv");
+        finalResultsRDD.saveAsTextFile(outputPath+"/top_kmers.tsv");
 
         // done
         // I'm commenting these out, they cause the EMR job to fail if I leave either in here!?
