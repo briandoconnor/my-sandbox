@@ -87,15 +87,14 @@ public class Kmer {
     public static void main(String[] args) throws Exception {
         // STEP-1: handle input parameters
         if (args.length < 5) {
-            System.err.println("Usage: Kmer <fastq-file> <K> <N> <partitions> <outputPath> <manifest>");
+            System.err.println("Usage: Kmer <manifest> <K> <N> <partitions> <outputPath>");
             System.exit(1);
         }
-        final String fastqFileName =  args[0];
+        final String manifestPath =  args[0];
         final int K =  Integer.parseInt(args[1]); // to find K-mers
         final int N =  Integer.parseInt(args[2]); // to find top-N
         final int partitionsNum =  Integer.parseInt(args[3]); // number of partitions to use
         final String outputPath =  args[4]; // output report path
-        final String manifestPath = args[5]; // path to manifest
 
         // STEP-2: create a Spark context object
         JavaSparkContext ctx = SparkUtil.createJavaSparkContext("kmer");
@@ -106,7 +105,8 @@ public class Kmer {
         final Broadcast<Integer> broadcastN = ctx.broadcast(N);
 
         // this is a manifest of UUIDs
-        JavaRDD<String> manifestRecords = ctx.textFile(manifestPath, partitionsNum);
+        //JavaRDD<String> manifestRecords = ctx.textFile(manifestPath, partitionsNum);
+        JavaRDD<String> manifestRecords = ctx.textFile(manifestPath);
         JavaRDD<String> listOfFastqUUIDs = manifestRecords.flatMap(data -> {
             ArrayList<String> results = new ArrayList<String>();
             try {
