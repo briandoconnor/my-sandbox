@@ -135,7 +135,7 @@ public class Kmer {
             }
             return(results.iterator());
         });
-        listOfFastqUUIDs.repartition(1).saveAsTextFile(outputPath+"/uuids.tsv");
+        listOfFastqUUIDs.saveAsTextFile(outputPath+"/uuids.tsv");
 
         // now generate fastqs lines prefixed with file UUID
         // TODO: need to add UUID
