@@ -73,7 +73,13 @@ public class Kmer {
             connection.setRequestMethod("GET");
             connection.connect();
         }
+        Map<String, List<String>> map = connection.getHeaderFields();
+        for (Map.Entry<String, List<String>> entry : map.entrySet()) {
+            System.err.println("Key : " + entry.getKey() +
+                    " ,Value : " + entry.getValue());
+        }
         String redirect = connection.getHeaderField("Location");
+
         System.err.println("REDIRECT : "+redirect);
         return(redirect);
     }

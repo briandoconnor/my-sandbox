@@ -43,19 +43,19 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/Kmer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="518">
-              <caret line="76" column="49" lean-forward="false" selection-start-line="76" selection-start-column="49" selection-end-line="76" selection-end-column="49" />
+              <caret line="76" column="35" lean-forward="false" selection-start-line="76" selection-start-column="35" selection-end-line="76" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4328#4336#0" expanded="true" />
-                <element signature="e#6205#6229#0" expanded="true" />
-                <element signature="e#6882#6883#0" expanded="true" />
-                <element signature="e#6928#6929#0" expanded="true" />
-                <element signature="e#7613#7649#0" expanded="true" />
-                <element signature="e#8982#9018#0" expanded="true" />
-                <element signature="e#9378#9395#0" expanded="true" />
-                <element signature="e#9921#9929#0" expanded="true" />
-                <element signature="e#10122#10131#0" expanded="true" />
-                <element signature="e#10951#10959#0" expanded="true" />
+                <element signature="e#4593#4601#0" expanded="true" />
+                <element signature="e#6470#6494#0" expanded="true" />
+                <element signature="e#7147#7148#0" expanded="true" />
+                <element signature="e#7193#7194#0" expanded="true" />
+                <element signature="e#7878#7914#0" expanded="true" />
+                <element signature="e#9247#9283#0" expanded="true" />
+                <element signature="e#9643#9660#0" expanded="true" />
+                <element signature="e#10186#10194#0" expanded="true" />
+                <element signature="e#10387#10396#0" expanded="true" />
+                <element signature="e#11216#11224#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -579,12 +579,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1522387939125</updated>
-      <workItem from="1522387940625" duration="23646000" />
+      <workItem from="1522387940625" duration="23851000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23646000" />
+    <option name="totallyTimeSpent" value="23851000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
@@ -683,19 +683,19 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Kmer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
-          <caret line="76" column="49" lean-forward="false" selection-start-line="76" selection-start-column="49" selection-end-line="76" selection-end-column="49" />
+          <caret line="76" column="35" lean-forward="false" selection-start-line="76" selection-start-column="35" selection-end-line="76" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4328#4336#0" expanded="true" />
-            <element signature="e#6205#6229#0" expanded="true" />
-            <element signature="e#6882#6883#0" expanded="true" />
-            <element signature="e#6928#6929#0" expanded="true" />
-            <element signature="e#7613#7649#0" expanded="true" />
-            <element signature="e#8982#9018#0" expanded="true" />
-            <element signature="e#9378#9395#0" expanded="true" />
-            <element signature="e#9921#9929#0" expanded="true" />
-            <element signature="e#10122#10131#0" expanded="true" />
-            <element signature="e#10951#10959#0" expanded="true" />
+            <element signature="e#4593#4601#0" expanded="true" />
+            <element signature="e#6470#6494#0" expanded="true" />
+            <element signature="e#7147#7148#0" expanded="true" />
+            <element signature="e#7193#7194#0" expanded="true" />
+            <element signature="e#7878#7914#0" expanded="true" />
+            <element signature="e#9247#9283#0" expanded="true" />
+            <element signature="e#9643#9660#0" expanded="true" />
+            <element signature="e#10186#10194#0" expanded="true" />
+            <element signature="e#10387#10396#0" expanded="true" />
+            <element signature="e#11216#11224#0" expanded="true" />
           </folding>
         </state>
       </provider>
