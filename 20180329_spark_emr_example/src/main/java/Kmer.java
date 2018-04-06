@@ -62,16 +62,20 @@ public class Kmer {
     public static String readLocationFromUrl(String url) throws IOException, JSONException {
         // TODO: this will need to deal with 301 code
         URL myUrl = new URL(url);
+        System.err.println("THE URL: "+url);
         HttpURLConnection connection = (HttpURLConnection)myUrl.openConnection();
         connection.setRequestMethod("GET");
         connection.connect();
         int code = connection.getResponseCode();
-        if (code == 302) { // TODO: needs to be a retry loop
+        if (code == 301) { // TODO: needs to be a retry loop
+            System.err.println("GOT A 301 retry: "+url);
             connection = (HttpURLConnection)myUrl.openConnection();
             connection.setRequestMethod("GET");
             connection.connect();
         }
-        return(connection.getHeaderField("Location"));
+        String redirect = connection.getHeaderField("Location");
+        System.err.println("REDIRECT : "+redirect);
+        return(redirect);
     }
 
 
