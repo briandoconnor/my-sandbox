@@ -59,7 +59,7 @@ public class Kmer {
         }
     }
 
-    public static String readLocationFromUrl(String url) throws IOException, JSONException {
+    public static HttpURLConnection readLocationFromUrl(String url) throws IOException, JSONException {
         // TODO: this will need to deal with 301 code
         URL myUrl = new URL(url);
         System.err.println("THE URL: "+url);
@@ -81,7 +81,7 @@ public class Kmer {
         String redirect = connection.getHeaderField("Location");
 
         System.err.println("REDIRECT : "+redirect);
-        return(redirect);
+        return(connection);
     }
 
 
@@ -253,8 +253,8 @@ public class Kmer {
         ArrayList<String> result = new ArrayList<String>();
         // open up the uuid and stream back from it
         try {
-            String signedUrl = Kmer.readLocationFromUrl("https://dss.data.humancellatlas.org/v1/files/"+uuid+"?replica=aws");
-            InputStream is = new URL(signedUrl).openStream();
+            HttpURLConnection connection = Kmer.readLocationFromUrl("https://dss.data.humancellatlas.org/v1/files/"+uuid+"?replica=aws");
+            InputStream is = connection.getInputStream(); // new URL(signedUrl).openStream();
             try {
                 BufferedReader rd = new BufferedReader(new InputStreamReader(new GZIPInputStream(is), Charset.forName("UTF-8")));
                 String line;
