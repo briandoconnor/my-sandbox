@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="20180329_spark_emr_example" />
+        <module name="simple-project" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="20180329_spark_emr_example" target="1.8" />
+      <module name="simple-project" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

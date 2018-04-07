@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/20180329_spark_emr_example.iml" filepath="$PROJECT_DIR$/20180329_spark_emr_example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/simple-project.iml" filepath="$PROJECT_DIR$/simple-project.iml" />
     </modules>
   </component>
 </project>
