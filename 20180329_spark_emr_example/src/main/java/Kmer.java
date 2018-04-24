@@ -98,7 +98,7 @@ public class Kmer {
     }
 
     // utility
-    public static ArrayList<String> streamAndFilterFastqGz(String uuid) {
+    public static ArrayList<String> streamAndFilterFastqGz(String uuid, int numberOfLines) {
 
         // pattern matching
         Pattern pattern = Pattern.compile("^[atgcATGC]+$");
@@ -112,8 +112,10 @@ public class Kmer {
             try {
                 BufferedReader rd = new BufferedReader(new InputStreamReader(new GZIPInputStream(is), Charset.forName("UTF-8")));
                 String line;
+                int currLine = 0;
                 while ( ( line = rd.readLine() ) != null ) {
-                    if (pattern.matcher(line).matches()) {
+                    if (pattern.matcher(line).matches() && (numberOfLines <= 0 || currLine < numberOfLines)) {
+                        currLine++;
                         result.add(uuid+":::"+line);
                     }
                 }
@@ -139,7 +141,8 @@ public class Kmer {
         final int K =  Integer.parseInt(args[1]); // to find K-mers
         final int N =  Integer.parseInt(args[2]); // to find top-N
         final int partitionsNum =  Integer.parseInt(args[3]); // number of partitions to use
-        final String outputPath =  args[4]; // output report path
+        final int numberOfLines =  Integer.parseInt(args[4]); // number of partitions to use
+        final String outputPath =  args[5]; // output report path
 
         // STEP-2: create a Spark context object
         JavaSparkContext ctx = SparkUtil.createJavaSparkContext("kmer");
@@ -175,7 +178,7 @@ public class Kmer {
         // now generate fastqs lines prefixed with file UUID
         // TODO: need to add UUID
         JavaRDD<String> filteredRDD = listOfFastqUUIDs.flatMap(s -> {
-            ArrayList<String> result = Kmer.streamAndFilterFastqGz(s);
+            ArrayList<String> result = Kmer.streamAndFilterFastqGz(s, numberOfLines);
             return(result.iterator());
         });
 

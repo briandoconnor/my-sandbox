@@ -15,4 +15,6 @@ pip install awscli --upgrade
 
 # compile the code
 git commit -a -m updates; git push && mvn clean install && aws s3 cp target/simple-project-1.0.jar s3://briandoconnor-toil-testing/
+
+# now run it via the console
 ```
