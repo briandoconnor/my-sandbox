@@ -6,6 +6,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.zip.GZIPInputStream;
 //
 import org.codehaus.jettison.json.JSONException;
@@ -39,6 +40,7 @@ import org.apache.spark.broadcast.Broadcast;
  * sizes are referred to as 12-mers, 20-mers, and so forth.
  *
  * @author Mahmoud Parsian
+ * @author Brian O'Connor (made tweaks for HCA demo)
  *
  * TODO:
  * need to add UUID prefix and deal correctly with that in the final code
@@ -59,8 +61,9 @@ public class Kmer {
         }
     }
 
+    // utility
     public static HttpURLConnection readLocationFromUrl(String url) throws IOException, JSONException {
-        // TODO: this will need to deal with 301 code
+        // TODO: this will need to deal with 301 code better
         URL myUrl = new URL(url);
         System.err.println("THE URL: "+url);
         HttpURLConnection connection = (HttpURLConnection)myUrl.openConnection();
@@ -84,7 +87,7 @@ public class Kmer {
         return(connection);
     }
 
-
+    // utility
     public static String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
         int cp;
@@ -94,6 +97,38 @@ public class Kmer {
         return sb.toString();
     }
 
+    // utility
+    public static ArrayList<String> streamAndFilterFastqGz(String uuid) {
+
+        // pattern matching
+        Pattern pattern = Pattern.compile("^[atgcATGC]+$");
+
+        ArrayList<String> result = new ArrayList<String>();
+        // open up the uuid and stream back from it
+        try {
+            // TODO: URL is hard coded for production, need a parameter.
+            HttpURLConnection connection = Kmer.readLocationFromUrl("https://dss.data.humancellatlas.org/v1/files/"+uuid+"?replica=aws");
+            InputStream is = connection.getInputStream();
+            try {
+                BufferedReader rd = new BufferedReader(new InputStreamReader(new GZIPInputStream(is), Charset.forName("UTF-8")));
+                String line;
+                while ( ( line = rd.readLine() ) != null ) {
+                    if (pattern.matcher(line).matches()) {
+                        result.add(uuid+":::"+line);
+                    }
+                }
+            } catch (Exception e) {
+                System.err.println("ERROR READING FROM FILE URL 1: "+e.getMessage());
+            } finally {
+                is.close();
+            }
+        } catch (Exception e) {
+            System.err.println("ERROR READING FROM FILE URL 2: "+e.getMessage());
+        }
+        return(result);
+    }
+
+    // main method
     public static void main(String[] args) throws Exception {
         // STEP-1: handle input parameters
         if (args.length < 5) {
@@ -247,37 +282,5 @@ public class Kmer {
         // I'm commenting these out, they cause the EMR job to fail if I leave either in here!?
         //ctx.close();
         //System.exit(0);
-    }
-
-    public static ArrayList<String> streamAndFilterFastqGz(String uuid) {
-        ArrayList<String> result = new ArrayList<String>();
-        // open up the uuid and stream back from it
-        try {
-            HttpURLConnection connection = Kmer.readLocationFromUrl("https://dss.data.humancellatlas.org/v1/files/"+uuid+"?replica=aws");
-            InputStream is = connection.getInputStream(); // new URL(signedUrl).openStream();
-            try {
-                BufferedReader rd = new BufferedReader(new InputStreamReader(new GZIPInputStream(is), Charset.forName("UTF-8")));
-                String line;
-                while ( ( line = rd.readLine() ) != null ) {
-                    String firstChar = line.substring(0,1);
-                    if ( !firstChar.equals("@") &&
-                            !firstChar.equals("+") &&
-                            !firstChar.equals(";") &&
-                            !firstChar.equals("!") &&
-                            !firstChar.equals("~") &&
-                            !line.contains(":")) {
-                        // add UUID prefix
-                        result.add(uuid+":::"+line);
-                    }
-                }
-            } catch (Exception e) {
-                System.err.println("ERROR READING FROM FILE URL 1: "+e.getMessage());
-            } finally {
-                is.close();
-            }
-        } catch (Exception e) {
-            System.err.println("ERROR READING FROM FILE URL 2: "+e.getMessage());
-        }
-        return(result);
     }
 }
