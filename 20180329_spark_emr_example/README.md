@@ -202,6 +202,14 @@ Perhaps this would be useful in building a feature to ask "what cells are
 most similar to this cell" using scRNAseq data for example.  Someone should
 see how well this works!
 
+Things to try:
+* on the Blue Box (HCA Data Store) team we'd like to scale our SPARK cluster and manifest up and see how well the Blue Box performs under load
+* ideally, uses of the HCA Data Store can process thousands of files simultaneously, so scaling the number of the following will be interesting:
+    * worker nodes
+    * partitions
+    * fastq files
+    * lines of fastq files used (beyond 1M!)
+
 Some other really basic improvements:
 * aggregating on biomaterial IDs instead of fastq file UUIDs, really this would be more meaningful for the k-mers for a biomaterial specimen for example
 * sorted output files
