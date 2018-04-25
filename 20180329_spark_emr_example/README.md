@@ -126,11 +126,11 @@ s3a://briandoconnor-toil-testing/manifest_small.tsv 32 10 40 1000 s3a://briandoc
 
 Here the arguments are:
 
-0. the manifest of the UUIDs for input data bundles
-0. the size of the k-mer, in this case 32 bases
-0. the top N abundant k-mers to report back, in this case the top 10 abundant k-mer per fastq file
-0. the number of sequences to process, here I'm just generating k-mers for the first 1000 reads per fastq file.  In Titus' blog post (see below) he used 1 million reads
-0. finally, the output S3 location for the output
+1. the manifest of the UUIDs for input data bundles
+1. the size of the k-mer, in this case 32 bases
+1. the top N abundant k-mers to report back, in this case the top 10 abundant k-mer per fastq file
+1. the number of sequences to process, here I'm just generating k-mers for the first 1000 reads per fastq file.  In Titus' blog post (see below) he used 1 million reads
+1. finally, the output S3 location for the output
 
 **NOTE:** you need to customize the jar path to wherever you copied it to
 in the previous step.  You also need to customize `s3a://briandoconnor-toil-testing/manifest_small.tsv` to wherever you
@@ -152,8 +152,9 @@ This is not super useful since you really expect a more useful ID like
 biomaterial specimen ID for example.
 
 The output can be split if you have generated a large number of k-mers.
+Look for the `part-000x` files in the `top_kmers.tsv` directory in S3.
 
-*With this test data and a 4 node cluster the run of the program should take 
+*With this test data and a 4 node cluster the run of the program should take
 about 3 minutes.*
 
 ```
