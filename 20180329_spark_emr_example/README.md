@@ -156,7 +156,7 @@ The output can be split if you have generated a large number of k-mers.
 Look for the `part-000x` files in the `top_kmers.tsv` directory in S3.
 
 *With this test data and a 4 node cluster the run of the program should take
-about 3 minutes. 8 minutes for 1M reads.  And X minutes when using the melanoma dataset (6639 bundles), 64 partitions, and 1M reads from each fastq.*
+about 3 minutes. 8 minutes for 1M reads.*
 
 ```
 03e63ba5-1818-42e4-a078-95d83104eb27	6	CAGAGTACTTTTTTTTTTTTTTTTTTTTTTTT
