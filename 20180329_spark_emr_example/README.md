@@ -129,7 +129,8 @@ Here the arguments are:
 0. the manifest of the UUIDs for input data bundles
 0. the size of the k-mer, in this case 32 bases
 0. the top N abundant k-mers to report back, in this case the top 10 abundant k-mer per fastq file
-0.
+0. the number of sequences to process, here I'm just generating k-mers for the first 1000 reads per fastq file.  In Titus' blog post (see below) he used 1 million reads
+0. finally, the output S3 location for the output
 
 **NOTE:** you need to customize the jar path to wherever you copied it to
 in the previous step.  You also need to customize `s3a://briandoconnor-toil-testing/manifest_small.tsv` to wherever you
@@ -142,6 +143,18 @@ You can then launch the job through the EMR web interface, see the
 ![launch job](img/launch_job.png "Launch Job")
 
 # Sample Output
+
+This is a just a TSV file with the first column being the UUID for the
+fastq file processed, the k-mer count, and the k-mer.  The top N k-mers are
+listed (but the order is not preserved, you need to look at the count).
+
+This is not super useful since you really expect a more useful ID like
+biomaterial specimen ID for example.
+
+The output can be split if you have generated a large number of k-mers.
+
+*With this test data and a 4 node cluster the run of the program should take 
+about 3 minutes.*
 
 ```
 03e63ba5-1818-42e4-a078-95d83104eb27	6	CAGAGTACTTTTTTTTTTTTTTTTTTTTTTTT
