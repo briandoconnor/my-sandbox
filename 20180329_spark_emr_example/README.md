@@ -129,6 +129,7 @@ Here the arguments are:
 1. the manifest of the UUIDs for input data bundles
 1. the size of the k-mer, in this case 32 bases
 1. the top N abundant k-mers to report back, in this case the top 10 abundant k-mer per fastq file
+1. the number of partitions, typically 3 or 4 times the number of CPU cores in your cluster (here my cluster is using `r4.xlarge` nodes, so 4 worker nodes x 4 cores x 3 or 4 = 48 to 64... I used 40)
 1. the number of sequences to process, here I'm just generating k-mers for the first 1000 reads per fastq file.  In Titus' blog post (see below) he used 1 million reads
 1. finally, the output S3 location for the output
 
