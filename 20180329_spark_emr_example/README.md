@@ -124,6 +124,13 @@ s3://briandoconnor-toil-testing/simple-project-1.0.jar
 s3a://briandoconnor-toil-testing/manifest_small.tsv 32 10 40 1000 s3a://briandoconnor-spark-testing
 ```
 
+Here the arguments are:
+
+0. the manifest of the UUIDs for input data bundles
+0. the size of the k-mer, in this case 32 bases
+0. the top N abundant k-mers to report back, in this case the top 10 abundant k-mer per fastq file
+0.
+
 **NOTE:** you need to customize the jar path to wherever you copied it to
 in the previous step.  You also need to customize `s3a://briandoconnor-toil-testing/manifest_small.tsv` to wherever you
 host your manifest and `s3a://briandoconnor-spark-testing` to wherever you
@@ -177,4 +184,17 @@ thinking of implementing what Titus Brown covers in this [blog post](http://ivor
 Specifically it would be super cool to calculate MinHash signature for each
 of the biomaterials in HCA and use these to quickly compare samples by samples.
 Perhaps this would be useful in building a feature to ask "what cells are
-most similar to this cell" using scRNAseq data for example.
+most similar to this cell" using scRNAseq data for example.  Someone should
+see how well this works!
+
+Some other really basic improvements:
+* aggregating on biomaterial IDs instead of fastq file UUIDs, really this would be more meaningful for the k-mers for a biomaterial specimen for example
+* sorted output files
+* I'm sure there are better ways/data structures to associated IDs with k-mers rather than the join I'm doing between ID and k-mer here
+* for the blue box team, this is a useful testbed to test our scalability
+
+Some more complex improvements to actually do something cool here:
+* look at ways to filter error-containing k-mers (see the blog post above)
+* look at ways to calculate MinHash using SPARK, for example see [here](https://databricks.com/blog/2017/05/09/detecting-abuse-scale-locality-sensitive-hashing-uber-engineering.html)
+* plotting code similar to Titus' blog post
+* trying to answer the bigger question, if this approach could help you identify similar cells and do that iteratively as more data is added to HCA.
