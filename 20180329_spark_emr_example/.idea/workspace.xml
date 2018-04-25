@@ -31,8 +31,8 @@
       <file leaf-file-name="Kmer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Kmer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="813">
-              <caret line="180" column="83" selection-start-line="180" selection-start-column="83" selection-end-line="180" selection-end-column="83" />
+            <state relative-caret-position="3060">
+              <caret line="283" column="94" selection-start-line="283" selection-start-column="94" selection-end-line="283" selection-end-column="94" />
               <folding>
                 <element signature="e#3677#3685#0" expanded="true" />
                 <element signature="e#6287#6295#0" expanded="true" />
@@ -591,12 +591,12 @@
       <option name="presentableId" value="Default" />
       <updated>1523141778880</updated>
       <workItem from="1523141780124" duration="249000" />
-      <workItem from="1524606943146" duration="1893000" />
+      <workItem from="1524606943146" duration="2784000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2142000" />
+    <option name="totallyTimeSpent" value="3033000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1417" extended-state="6" />
@@ -656,8 +656,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Kmer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="813">
-          <caret line="180" column="83" selection-start-line="180" selection-start-column="83" selection-end-line="180" selection-end-column="83" />
+        <state relative-caret-position="3060">
+          <caret line="283" column="94" selection-start-line="283" selection-start-column="94" selection-end-line="283" selection-end-column="94" />
           <folding>
             <element signature="e#3677#3685#0" expanded="true" />
             <element signature="e#6287#6295#0" expanded="true" />

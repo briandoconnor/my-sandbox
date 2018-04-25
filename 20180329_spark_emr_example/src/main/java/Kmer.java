@@ -153,8 +153,8 @@ public class Kmer {
         final Broadcast<Integer> broadcastN = ctx.broadcast(N);
 
         // this is a manifest of UUIDs
-        //JavaRDD<String> manifestRecords = ctx.textFile(manifestPath, partitionsNum);
-        JavaRDD<String> manifestRecords = ctx.textFile(manifestPath);
+        JavaRDD<String> manifestRecords = ctx.textFile(manifestPath, partitionsNum);
+        //JavaRDD<String> manifestRecords = ctx.textFile(manifestPath);
         JavaRDD<String> listOfFastqUUIDs = manifestRecords.flatMap(data -> {
             ArrayList<String> results = new ArrayList<String>();
             try {
@@ -281,8 +281,7 @@ public class Kmer {
         JavaRDD<String> finalResultsRDD = ctx.parallelize(finalResults);
         finalResultsRDD.saveAsTextFile(outputPath+"/top_kmers.tsv");
 
-        // done
-        // I'm commenting these out, they cause the EMR job to fail if I leave either in here!?
+        // I'm commenting these out, they cause the EMR job to fail if I leave either in here!
         //ctx.close();
         //System.exit(0);
     }
